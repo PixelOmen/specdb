@@ -1,7 +1,13 @@
 from sqlalchemy import Column, ARRAY, Integer, String, DateTime, Text, Float, Boolean, ForeignKey, inspect, func
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
+
+class Client(Base):
+    __tablename__ = 'clients'
+
+    name = Column(String(100), primary_key=True)
+    specs = relationship('Spec', back_populates='client')
 
 class Spec(Base):
     __tablename__ = 'specs'
@@ -49,6 +55,9 @@ class Spec(Base):
     start_timecode: str | None = Column(String(11)) #type:ignore
     naming_convention: str | None = Column(Text) #type:ignore
 
+    client_name = Column(String, ForeignKey('clients.name'))
+    client = relationship('Client', back_populates='specs')
+
     def __init__(self, **kwargs):
         for key, value in kwargs.items():
             setattr(self, key, value)
@@ -67,6 +76,3 @@ class Spec(Base):
             self.reports_required = True
         if self.artwork_description:
             self.artwork_required = True
-
-test = Spec()
-print(test.__table__.columns)

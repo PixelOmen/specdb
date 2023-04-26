@@ -1,10 +1,10 @@
 import utils
-from tables import Spec
+from tables import Spec, Client
 from config import SESSIONFACTORY, ENGINE
 
 
 session = SESSIONFACTORY()
-utils.delete_table(Spec.__tablename__, ENGINE)
+disney = Client(name='Disney')
 # Spec.__table__.create(ENGINE, checkfirst=True)
 # spec1 = Spec(name='test1', headbuild='headbuild info', audio_config='audio config info', colorspace='colorsapce info')
 

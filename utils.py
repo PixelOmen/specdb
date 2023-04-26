@@ -8,4 +8,4 @@ if TYPE_CHECKING:
 def delete_table(tablename: str, engine: "Engine") -> None:
     meta = MetaData()
     meta.reflect(bind=engine)
-    meta.tables[tablename].drop(engine)
+    meta.tables[tablename].drop(engine, checkfirst=True)
