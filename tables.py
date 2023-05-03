@@ -12,12 +12,11 @@ class Client(Base):
 class Spec(Base):
     __tablename__ = 'specs'
     
-    name = Column(String, primary_key=True)
+    name: str = Column(String, primary_key=True) #type:ignore
     description: str | None = Column(Text) #type:ignore
 
     created = Column(DateTime(timezone=True), server_default=func.now())
     updated = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
-    tags: list[str] | None = Column(ARRAY(Text)) #type:ignore
 
     source: bytes | None = Column(BLOB) #type:ignore
 
