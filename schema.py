@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ARRAY, Integer, String, DateTime, Text, Float, Boolean, ForeignKey, BLOB, func
+from sqlalchemy import Column, ARRAY, Integer, String, DateTime, Text, Float, Boolean, ForeignKey, LargeBinary, func
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
@@ -18,7 +18,7 @@ class Spec(Base):
     created = Column(DateTime(timezone=True), server_default=func.now())
     updated = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
-    source: bytes | None = Column(BLOB) #type:ignore
+    source: bytes | None = Column(LargeBinary) #type:ignore
 
     dropframe: bool = Column(Boolean, default=False) #type:ignore
     lkfs: bool = Column(Boolean, default=False) #type:ignore
