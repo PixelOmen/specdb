@@ -26,9 +26,6 @@ class Spec(Base):
     afd: bool = Column(Boolean, default=False) #type:ignore
     audio_flags: bool = Column(Boolean, default=True) #type:ignore
 
-    audio_config: list[list[str]] | None = Column(ARRAY(Text)) #type:ignore
-    audio_details: str | None = Column(Text) #type:ignore
-
     audio_description_required: bool = Column(Boolean, default=False) #type:ignore
     audio_description_details: str | None = Column(Text) #type:ignore
     hdr_metadata_required: bool = Column(Boolean, default=False) #type:ignore
@@ -50,7 +47,12 @@ class Spec(Base):
     slate_required: bool = Column(Boolean, default=False) #type:ignore
     slate_details: str | None = Column(Text) #type:ignore
 
+    start_timecode: str | None = Column(String(11)) #type:ignore
+    naming_convention: str | None = Column(Text) #type:ignore
     headtailbuild: str | None = Column(Text) #type:ignore
+    audio_config: list[list[str]] | None = Column(ARRAY(Text)) #type:ignore
+    audio_details: str | None = Column(Text) #type:ignore
+
     colorspace: str | None = Column(Text) #type:ignore
     resolution: str | None = Column(Text) #type:ignore
     aspect_ratio: str | None = Column(Text) #type:ignore
@@ -63,8 +65,7 @@ class Spec(Base):
     audio_codec_profile: str | None = Column(Text) #type:ignore
     audio_bitrate: str | None = Column(Text) #type:ignore
     audio_bitdepth: str | None = Column(Text) #type:ignore
-    start_timecode: str | None = Column(String(11)) #type:ignore
-    naming_convention: str | None = Column(Text) #type:ignore
+
     notes: str | None = Column(Text) #type:ignore
 
     client_name = Column(String, ForeignKey('clients.name'))
