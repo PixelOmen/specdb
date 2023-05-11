@@ -1,3 +1,5 @@
+import base64
+
 from sqlalchemy import Column, ARRAY, Integer, String, DateTime, Text, Float, Boolean, ForeignKey, LargeBinary, func
 from sqlalchemy.orm import declarative_base, relationship
 
@@ -74,3 +76,12 @@ class Spec(Base):
     def __init__(self, **kwargs):
         for key, value in kwargs.items():
             setattr(self, key, value)
+
+    def as_dict(self):
+        result = {}
+        for c in self.__table__.columns:
+            value = getattr(self, c.name)
+            if isinstance(value, bytes):
+                value = base64.b64encode(value).decode('utf-8')
+            result[c.name] = value
+        return result
