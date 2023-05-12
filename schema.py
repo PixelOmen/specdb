@@ -1,4 +1,6 @@
 import base64
+from zoneinfo import ZoneInfo
+from datetime import datetime
 
 from sqlalchemy import Column, ARRAY, Integer, String, DateTime, Text, Float, Boolean, ForeignKey, LargeBinary, func
 from sqlalchemy.orm import declarative_base, relationship
@@ -13,7 +15,7 @@ class Client(Base):
 
 class Spec(Base):
     __tablename__ = 'specs'
-    
+
     name = Column(String, primary_key=True) #type:ignore
     description: str | None = Column(Text) #type:ignore
 
@@ -81,7 +83,13 @@ class Spec(Base):
         result = {}
         for c in self.__table__.columns:
             value = getattr(self, c.name)
+            if isinstance(value, datetime):
+                value = self.localtime(value).strftime('%m/%d/%y %H:%M:%S')
             if isinstance(value, bytes):
                 value = base64.b64encode(value).decode('utf-8')
             result[c.name] = value
         return result
+
+    def localtime(self, datetime_obj: datetime) -> datetime:
+        localtz = ZoneInfo("America/Los_Angeles")
+        return datetime_obj.astimezone(localtz)
