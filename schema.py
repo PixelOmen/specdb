@@ -22,6 +22,7 @@ class Spec(Base):
     created = Column(DateTime(timezone=True), server_default=func.now())
     updated = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
+    source_filename: str | None = Column(Text) #type:ignore
     source: bytes | None = Column(LargeBinary) #type:ignore
 
     dropframe: bool = Column(Boolean, default=False) #type:ignore
@@ -79,7 +80,7 @@ class Spec(Base):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-    def as_dict(self):
+    def jsondict(self) -> dict:
         result = {}
         for c in self.__table__.columns:
             value = getattr(self, c.name)
@@ -87,6 +88,13 @@ class Spec(Base):
                 value = self.localtime(value).strftime('%m/%d/%y %H:%M:%S')
             if isinstance(value, bytes):
                 value = base64.b64encode(value).decode('utf-8')
+            result[c.name] = value
+        return result
+
+    def columns(self) -> dict:
+        result = {}
+        for c in self.__table__.columns:
+            value = getattr(self, c.name)
             result[c.name] = value
         return result
 
