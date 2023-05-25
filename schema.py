@@ -27,6 +27,9 @@ class Spec(Base):
     source_filename: str | None = Column(Text) #type:ignore
     source: bytes | None = Column(LargeBinary) #type:ignore
 
+    template_filename: str | None = Column(Text) #type:ignore
+    template: bytes | None = Column(LargeBinary) #type:ignore
+
     dropframe: bool = Column(Boolean, default=False) #type:ignore
     lkfs: bool = Column(Boolean, default=False) #type:ignore
     vchip: bool = Column(Boolean, default=False) #type:ignore
@@ -120,6 +123,9 @@ class TempSpec(Base):
 
     source_filename: str | None = Column(Text) #type:ignore
     source: bytes | None = Column(LargeBinary) #type:ignore
+
+    template_filename: str | None = Column(Text) #type:ignore
+    template: bytes | None = Column(LargeBinary) #type:ignore
 
     dropframe: bool = Column(Boolean, default=False) #type:ignore
     lkfs: bool = Column(Boolean, default=False) #type:ignore
