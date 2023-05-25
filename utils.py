@@ -1,22 +1,23 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Callable
 
-from sqlalchemy import MetaData
-from .schema import Spec, Client
+from .config import ENGINE
+from .schema import Spec, TempSpec, Client
 
 if TYPE_CHECKING:
-    from sqlalchemy import Engine
     from sqlalchemy.orm import Session
 
-def delete_client(clientname: str, session: "Session") -> None:
-    client = session.query(Client).filter(Client.name == clientname).first()
-    if client is None:
-        return
-    session.delete(client)
-    session.commit()
+def spec_to_temp(transferfunc: Callable[[Spec], TempSpec], session: "Session") -> None:
+    TempSpec.__table__.drop(ENGINE, checkfirst=True)
+    TempSpec.__table__.create(ENGINE)
+    allspecs = session.query(Spec).all()
+    for spec in allspecs:
+        tempspec = transferfunc(spec)
+        session.add(tempspec)
 
-def delete_spec(specname: str, session: "Session") -> None:
-    spec = session.query(Spec).filter(Spec.name == specname).first()
-    if spec is None:
-        return
-    session.delete(spec)
-    session.commit()
+def temp_to_spec(session: "Session") -> None:
+    Spec.__table__.drop(ENGINE, checkfirst=True)
+    Spec.__table__.create(ENGINE)
+    alltempspecs = session.query(TempSpec).all()
+    for tempspec in alltempspecs:
+        spec = Spec(**tempspec.columns())
+        session.add(spec)

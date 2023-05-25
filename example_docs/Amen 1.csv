@@ -1,0 +1,39 @@
+SDH,es-ES,,WO-1728978,,OS-97973614,timed_text,sdh
+Audio Description,es-ES,FALSE,WO-1728979,,OS-97973615,audio_description,audio_description_2.0
+SIP Placeholder,es-ES,FALSE,WO-1728979,,SIP-1728979-1,audio_description,audio_description_5.1
+SIP Placeholder,es-ES,FALSE,WO-1728979,,SIP-1728979-2,audio_description,audio_description_atmos
+UHD Video,,,WO-1728980,SDR,OS-97973616,video,oar
+UHD Video,,,WO-1728980,HDR Constrained,OS-97973617,video,oar
+Ancillary,,,WO-1728980,,OS-97973617-hdr10,enhancement,hdr10
+Ancillary,,,WO-1728980,,OS-97973617-dolbyvision,enhancement,dolbyvision
+UHD Video,,,WO-1728980,HDR Unconstrained,SIP-1728980-1,video,oar
+Ancillary,,,WO-1728980,,SIP-1728980-1-dolbyvision,enhancement,dolbyvision
+Audio,es-ES,FALSE,WO-1728980,,OS-97973618,audio,2
+Audio,es-ES,FALSE,WO-1728980,,OS-97973619,audio,5.1
+Audio,es-ES,,WO-1728980,,OS-97973620,dub_card,oar
+Audio,es-ES,,WO-1728980,,OS-97973621,timed_text,ntt
+SIP Placeholder,es-ES,FALSE,WO-1728980,,SIP-1728980-2,atmos,atmos_na
+SDH,en,,WO-1728981,,OS-97973622,timed_text,sdh
+Subtitle,ar,,WO-1728982,,OS-97973623,timed_text,stt
+Subtitle,zh-Hant,,WO-1728983,,OS-97973624,timed_text,stt
+Subtitle,cs,,WO-1728984,,OS-97973625,timed_text,stt
+Subtitle,da,,WO-1728985,,OS-97973626,timed_text,stt
+Subtitle,nl,,WO-1728986,,OS-97973627,timed_text,stt
+Subtitle,fi,,WO-1728987,,OS-97973628,timed_text,stt
+Subtitle,fr-FR,,WO-1728988,,OS-97973629,timed_text,stt
+Subtitle,de,,WO-1728989,,OS-97973630,timed_text,stt
+Subtitle,el,,WO-1728990,,OS-97973631,timed_text,stt
+Subtitle,he,,WO-1728991,,OS-97973632,timed_text,stt
+Subtitle,hu,,WO-1728992,,OS-97973633,timed_text,stt
+Subtitle,it,,WO-1728993,,OS-97973634,timed_text,stt
+Subtitle,ja,,WO-1728994,,OS-97973635,timed_text,stt
+Subtitle,ko,,WO-1728995,,OS-97973636,timed_text,stt
+Subtitle,no,,WO-1728996,,OS-97973637,timed_text,stt
+Subtitle,pl,,WO-1728997,,OS-97973638,timed_text,stt
+Subtitle,pt-BR,,WO-1728998,,OS-97973639,timed_text,stt
+Subtitle,pt-PT,,WO-1728999,,OS-97973640,timed_text,stt
+Subtitle,ro,,WO-1729000,,OS-97973641,timed_text,stt
+Subtitle,sk,,WO-1729001,,OS-97973642,timed_text,stt
+Subtitle,es-419,,WO-1729002,,OS-97973643,timed_text,stt
+Subtitle,sv,,WO-1729003,,OS-97973644,timed_text,stt
+Subtitle,tr,,WO-1729004,,OS-97973645,timed_text,stt

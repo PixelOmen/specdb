@@ -17,7 +17,8 @@ class Client(Base):
 class Spec(Base):
     __tablename__ = 'specs'
 
-    name = Column(String, primary_key=True) #type:ignore
+    id: int = Column(Integer, primary_key=True, autoincrement=True) #type:ignore
+    name = Column(String) #type:ignore
     description: str | None = Column(Text) #type:ignore
 
     created = Column(DateTime(timezone=True), server_default=func.now())
@@ -52,6 +53,8 @@ class Spec(Base):
     burnins_details: str | None = Column(Text) #type:ignore
     slate_required: bool = Column(Boolean, default=False) #type:ignore
     slate_details: str | None = Column(Text) #type:ignore
+    textless_required: bool = Column(Boolean, default=False) #type:ignore
+    textless_details: str | None = Column(Text) #type:ignore
 
     start_timecode: str | None = Column(String(11)) #type:ignore
     naming_convention: str | None = Column(Text) #type:ignore
@@ -63,10 +66,12 @@ class Spec(Base):
     resolution: str | None = Column(Text) #type:ignore
     aspect_ratio: str | None = Column(Text) #type:ignore
     framerate: str | None = Column(Text) #type:ignore
+    video_container: str | None = Column(Text) #type:ignore
     video_codec: str | None = Column(Text) #type:ignore
     video_codec_profile: str | None = Column(Text) #type:ignore
     video_bitrate: str | None = Column(Text) #type:ignore
     video_bitdepth: str | None = Column(Text) #type:ignore
+    audio_container: str | None = Column(Text) #type:ignore
     audio_codec: str | None = Column(Text) #type:ignore
     audio_codec_profile: str | None = Column(Text) #type:ignore
     audio_bitrate: str | None = Column(Text) #type:ignore
@@ -106,7 +111,8 @@ class Spec(Base):
 class TempSpec(Base):
     __tablename__ = 'tempspecs'
 
-    name = Column(String, primary_key=True) #type:ignore
+    id: int = Column(Integer, primary_key=True, autoincrement=True) #type:ignore
+    name = Column(String) #type:ignore
     description: str | None = Column(Text) #type:ignore
 
     created = Column(DateTime(timezone=True), server_default=func.now())
@@ -141,6 +147,8 @@ class TempSpec(Base):
     burnins_details: str | None = Column(Text) #type:ignore
     slate_required: bool = Column(Boolean, default=False) #type:ignore
     slate_details: str | None = Column(Text) #type:ignore
+    textless_required: bool = Column(Boolean, default=False) #type:ignore
+    textless_details: str | None = Column(Text) #type:ignore
 
     start_timecode: str | None = Column(String(11)) #type:ignore
     naming_convention: str | None = Column(Text) #type:ignore
@@ -152,10 +160,12 @@ class TempSpec(Base):
     resolution: str | None = Column(Text) #type:ignore
     aspect_ratio: str | None = Column(Text) #type:ignore
     framerate: str | None = Column(Text) #type:ignore
+    video_container: str | None = Column(Text) #type:ignore
     video_codec: str | None = Column(Text) #type:ignore
     video_codec_profile: str | None = Column(Text) #type:ignore
     video_bitrate: str | None = Column(Text) #type:ignore
     video_bitdepth: str | None = Column(Text) #type:ignore
+    audio_container: str | None = Column(Text) #type:ignore
     audio_codec: str | None = Column(Text) #type:ignore
     audio_codec_profile: str | None = Column(Text) #type:ignore
     audio_bitrate: str | None = Column(Text) #type:ignore
