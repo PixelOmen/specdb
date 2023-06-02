@@ -2,7 +2,7 @@ import base64
 from zoneinfo import ZoneInfo
 from datetime import datetime
 
-from sqlalchemy import Column, ARRAY, Integer, String, DateTime, Text, Float, Boolean, ForeignKey, LargeBinary, func
+from sqlalchemy import Column, Integer, String, DateTime, Text, Boolean, ForeignKey, LargeBinary, func
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
