@@ -6,6 +6,10 @@ from .schema import Spec, TempSpec, Client
 if TYPE_CHECKING:
     from sqlalchemy.orm import Session
 
+def init_db() -> None:
+    Spec.__table__.create(ENGINE, checkfirst=True)
+    Client.__table__.create(ENGINE, checkfirst=True)
+
 def delete_client(client_name: str, session: "Session") -> None:
     client = session.query(Client).filter(Client.name == client_name).first()
     if client is None:
