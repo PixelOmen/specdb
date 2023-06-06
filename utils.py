@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING, Callable
 
-from .config import ENGINE
+from . import ENGINE
 from .schema import Spec, TempSpec, Client
 
 if TYPE_CHECKING:
